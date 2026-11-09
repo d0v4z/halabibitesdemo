@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halabi Bites | Born From Fire · Smoked Brisket, Tariq el Jdideh</title>
+<meta name="description" content="Halabi Bites, the king of brisket. Smoked low and slow, made fresh daily in Tariq el Jdideh. Kaskas branch coming soon. Call for orders 76 861 668.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Halabi Bites | Born From Fire">
+<meta property="og:image" content="assets/img/logo.jpg">
+<link rel="icon" href="assets/img/badge.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Gochi+Hand&family=Montserrat:wght@400;600;800&family=Marhey:wght@500;700&family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--or:#eb6326;--yl:#f5a620;--iv:#fae0ce;--bk:#000;--ch:#121110;--sm:#1d1b19;--mute:rgba(250,224,206,.6);--line:rgba(250,224,206,.13);
+  --dirt:"Rubik Dirt","Impact","Arial Black",sans-serif;--hand:"Gochi Hand","Comic Sans MS",cursive;--body:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;--ar:"Marhey","Cairo",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+body{background:var(--bk);color:var(--iv);font-family:var(--body);line-height:1.6}
+html[dir=rtl] body{font-family:"Cairo",var(--body)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.09;z-index:3;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.dirt{font-family:var(--dirt);font-weight:400;text-transform:uppercase;line-height:.88}
+.hand{font-family:var(--hand);font-weight:400}
+html[dir=rtl] .dirt.tr{font-family:var(--ar);font-weight:700;line-height:1.15}
+html[dir=rtl] .hand.tr{font-family:var(--ar);font-weight:500}
+
+/* hand-drawn circle */
+.circ{position:relative;display:inline-block;white-space:nowrap}
+.circ svg{position:absolute;left:-14%;top:-22%;width:128%;height:144%;overflow:visible;pointer-events:none}
+.circ svg path{fill:none;stroke:var(--or);stroke-width:3;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.6,0,.3,1)}
+.circ.on svg path{stroke-dashoffset:0}
+.circ.iv svg path{stroke:var(--iv)}
+.circ.yl svg path{stroke:var(--yl)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;padding-top:max(12px,env(safe-area-inset-top));transition:background .3s}
+.nav.solid{background:rgba(0,0,0,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:38px;height:38px;border-radius:10px;object-fit:cover}
+.brand b{font-family:var(--dirt);font-weight:400;font-size:20px;letter-spacing:.02em;color:var(--yl)}
+.links{display:flex;gap:24px;font-family:var(--hand);font-size:20px}
+.links a{opacity:.85}.links a:hover{opacity:1;color:var(--yl)}
+.navr{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:6px;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+  transition:transform .15s,background .2s,box-shadow .2s;clip-path:polygon(2% 0,100% 4%,98% 100%,0 96%)}
+html[dir=rtl] .btn{letter-spacing:0}
+.btn:active{transform:scale(.96)}
+.btn.or{background:var(--or);color:#000}.btn.or:hover{background:#ff7a3c}
+.btn.yl{background:var(--yl);color:#000}.btn.yl:hover{background:#ffb93f}
+.btn.gh{background:rgba(250,224,206,.1);color:var(--iv)}.btn.gh:hover{background:rgba(250,224,206,.18)}
+.btn.sm{padding:10px 14px;font-size:12px}
+.btn svg{width:17px;height:17px;flex:none}
+.lang{padding:8px 12px;border-radius:6px;border:1.5px solid rgba(250,224,206,.3);font-weight:700;font-size:14px;font-family:"Cairo",var(--body)}
+@media (max-width:820px){.links{display:none}.brand b{display:none}}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:saturate(1.1) contrast(1.05)}
+.hero .shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.15) 30%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.95) 100%),radial-gradient(ellipse at 50% 120%,rgba(235,99,38,.45),transparent 60%)}
+#embers{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.hcopy{position:relative;z-index:2;width:min(1180px,100% - 40px);margin:0 auto;padding-bottom:calc(46px + env(safe-area-inset-bottom))}
+.hk{font-family:var(--hand);font-size:clamp(20px,2.4vw,28px);color:var(--iv);margin-bottom:6px;display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(10px);transition:all .7s ease .2s}
+.hk::before{content:"";width:34px;height:2px;background:var(--yl)}
+.big{font-size:clamp(76px,17vw,210px);color:var(--yl);letter-spacing:-.005em;text-shadow:0 8px 40px rgba(0,0,0,.5)}
+.big span{display:block}
+.big .ln{opacity:0;transform:translateY(60px) rotate(-3deg);transition:opacity .6s ease,transform .8s cubic-bezier(.2,1.3,.4,1)}
+.big .ln:nth-child(2){transition-delay:.12s}.big .ln:nth-child(3){transition-delay:.24s}
+.big .fire{color:var(--or);position:relative;display:inline-block}
+.loaded .hk,.loaded .big .ln{opacity:1;transform:none}
+.flick{animation:flick 3.2s infinite 1.6s}
+@keyframes flick{0%,100%{text-shadow:0 0 0 rgba(235,99,38,0)}8%{text-shadow:0 0 30px rgba(235,99,38,.8)}10%{text-shadow:0 0 6px rgba(235,99,38,.3)}14%{text-shadow:0 0 40px rgba(245,166,32,.9)}30%{text-shadow:0 0 16px rgba(235,99,38,.4)}}
+.hrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:20px;opacity:0;transform:translateY(16px);transition:all .8s ease .9s}
+.loaded .hrow{opacity:1;transform:none}
+.slogan{font-family:var(--ar);font-size:clamp(24px,3vw,32px);color:var(--iv);padding:2px 14px;border:2px solid var(--or);border-radius:4px;transform:rotate(-2deg);direction:rtl;background:rgba(0,0,0,.35)}
+.hint{position:absolute;right:20px;top:50%;font-family:var(--hand);font-size:18px;color:var(--mute);writing-mode:vertical-rl;letter-spacing:.1em;z-index:2}
+html[dir=rtl] .hint{right:auto;left:20px}
+@media (max-width:700px){.hint{display:none}}
+.bull{position:absolute;right:max(20px,4vw);top:110px;width:clamp(90px,14vw,170px);z-index:2;opacity:0;transition:opacity 1s ease 1.3s;color:var(--iv)}
+html[dir=rtl] .bull{right:auto;left:max(20px,4vw)}
+.loaded .bull{opacity:.9}
+.bull svg{width:100%;height:auto;overflow:visible}
+.bull .hn{fill:none;stroke:currentColor;stroke-width:5;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.4s ease 1.5s}
+.loaded .bull .hn{stroke-dashoffset:0}
+.bull text{font-family:var(--hand);font-size:22px;fill:var(--yl)}
+
+/* unwrap */
+.uw{height:300vh;position:relative}
+.uw .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;align-items:center}
+.uw-grid{display:grid;gap:22px;align-items:center;width:min(1180px,100% - 40px);margin:0 auto}
+@media (min-width:900px){.uw-grid{grid-template-columns:1fr 1fr;gap:60px}}
+.frame{position:relative;justify-self:center;width:min(100%,430px);aspect-ratio:420/746;max-height:62svh;border-radius:6px;overflow:hidden;background:#111;box-shadow:0 0 0 2px var(--or),14px 14px 0 var(--yl),0 40px 90px rgba(0,0,0,.6);transform:rotate(1.5deg)}
+@media (min-width:900px){.frame{max-height:80svh}}
+.frame canvas{width:100%;height:100%;display:block;object-fit:cover}
+.frame .tape{position:absolute;top:-10px;left:50%;width:120px;height:30px;margin-left:-60px;background:rgba(245,166,32,.85);transform:rotate(-4deg);z-index:2}
+.uw-txt{position:relative;min-height:220px}
+@media (max-width:899px){.uw-grid{grid-template-rows:auto auto;padding-top:76px}.uw-txt{min-height:150px;text-align:center}}
+.step{position:absolute;inset:0;opacity:0;transform:translateY(24px);transition:opacity .4s,transform .5s cubic-bezier(.2,.9,.2,1)}
+.step.on{opacity:1;transform:none}
+.step .n{font-family:var(--hand);font-size:22px;color:var(--or)}
+.step h2{font-size:clamp(46px,7vw,96px);color:var(--iv);margin:4px 0 10px}
+.step h2 em{font-style:normal;color:var(--yl)}
+.step p{font-family:var(--hand);font-size:clamp(20px,2.2vw,26px);color:var(--mute);max-width:24ch}
+@media (max-width:899px){.step p{margin:0 auto}}
+.uwbar{position:absolute;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(320px,70vw);height:6px;border-radius:6px;background:var(--line);overflow:hidden}
+.uwbar i{display:block;height:100%;background:linear-gradient(90deg,var(--or),var(--yl));transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* kings */
+.sec{padding:110px 0;position:relative}
+.eye{font-family:var(--hand);font-size:24px;color:var(--or);margin-bottom:4px}
+.h{font-size:clamp(56px,9vw,124px);color:var(--yl)}
+.h em{font-style:normal;color:var(--iv)}
+.rv{opacity:0;transform:translateY(40px) rotate(-1deg);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.9,.2,1)}
+.rv.in{opacity:1;transform:none}
+.kings{display:grid;gap:22px;margin-top:46px}
+@media (min-width:900px){.kings{grid-template-columns:repeat(3,1fr);gap:26px}}
+.king{position:relative;background:#0b0a09;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.2,.9,.2,1);
+  box-shadow:0 0 0 1.5px rgba(250,224,206,.15)}
+.king::before{content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;z-index:1;
+  background-image:radial-gradient(rgba(250,224,206,.25) 1px,transparent 1.2px);background-size:7px 9px}
+.king:hover{transform:translateY(-8px) rotate(-1deg)}
+.king:nth-child(2):hover{transform:translateY(-8px) rotate(1deg)}
+.king .ph{position:relative;aspect-ratio:5/4;overflow:hidden}
+.king .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.king:hover .ph img{transform:scale(1.07)}
+.king .ph.hot img{filter:saturate(1.35) hue-rotate(-8deg) contrast(1.08)}
+.king .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#0b0a09)}
+.heat{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--hand);font-size:18px;background:var(--bk);color:var(--yl);padding:4px 12px;border-radius:4px;transform:rotate(-3deg)}
+html[dir=rtl] .heat{left:auto;right:12px;transform:rotate(3deg)}
+.king .bd{position:relative;z-index:2;padding:4px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.king h3{font-size:clamp(36px,4vw,46px);color:var(--yl);line-height:.9;direction:ltr;text-align:start}
+html[dir=rtl] .king h3{text-align:right}
+.king .ing{font-family:var(--hand);font-size:20px;line-height:1.35;color:var(--iv);flex:1;direction:ltr;text-align:start}
+html[dir=rtl] .king .ing{text-align:right}
+.king .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.price{direction:ltr}
+.price b{display:block;font-family:var(--dirt);font-weight:400;font-size:clamp(22px,2.4vw,28px);color:var(--or);line-height:1;white-space:nowrap}
+.price small{font-family:var(--hand);font-size:16px;color:var(--mute)}
+.scrib{position:absolute;right:14px;top:14px;z-index:2;font-family:var(--hand);font-size:19px;color:var(--iv);background:rgba(0,0,0,.6);padding:2px 10px;border-radius:4px;transform:rotate(4deg)}
+html[dir=rtl] .scrib{right:auto;left:14px;transform:rotate(-4deg)}
+
+/* kit */
+.kit-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
+.kit-head p{font-family:var(--hand);font-size:22px;color:var(--mute);max-width:26ch}
+.strip{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:40px 6vw 30px;margin-top:10px;scrollbar-width:none;cursor:grab}
+.strip::-webkit-scrollbar{display:none}
+.strip.drag{cursor:grabbing;scroll-snap-type:none}
+.pk{flex:none;width:min(78vw,380px);scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;user-select:none}
+.pk .img{width:100%;aspect-ratio:1;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.9,.2,1)}
+.pk .img img{max-width:100%;max-height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 30px 40px rgba(235,99,38,.18))}
+.pk:hover .img{transform:translateY(-10px) rotate(-3deg) scale(1.04)}
+.pk .lbl{font-family:var(--hand);font-size:22px;color:var(--iv);padding:2px 16px}
+.drag-hint{font-family:var(--hand);font-size:18px;color:var(--mute);text-align:center}
+
+/* branches */
+.br-sec{position:relative;padding:120px 0 110px;overflow:hidden;isolation:isolate}
+.br-sec .bg{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center 30%;filter:grayscale(.6) brightness(.32)}
+.br-sec .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#000 0%,rgba(0,0,0,.2) 40%,#000 100%)}
+.tickets{display:grid;gap:18px;margin-top:40px}
+@media (min-width:800px){.tickets{grid-template-columns:1fr 1fr}}
+.tk{position:relative;background:var(--iv);color:#000;padding:26px 26px 24px;border-radius:4px;transform:rotate(-1.2deg);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.tk:nth-child(2){transform:rotate(1.4deg);background:var(--yl)}
+.tk::before,.tk::after{content:"";position:absolute;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:#000}
+.tk::before{left:-13px}.tk::after{right:-13px}
+.tk .k{font-family:var(--hand);font-size:20px;color:var(--or)}
+.tk:nth-child(2) .k{color:#000;opacity:.7}
+.tk h3{font-size:clamp(40px,5vw,60px);color:#000;margin:2px 0 6px}
+.tk .ar{font-family:var(--ar);font-size:22px;direction:rtl;text-align:start}
+html[dir=ltr] .tk .ar{text-align:left}
+.tk .ph{font-weight:800;font-size:16px;margin-top:4px;direction:ltr;unicode-bidi:isolate}
+.tk .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tk .btn.bk{background:#000;color:var(--iv)}
+.tk .btn.ol{background:transparent;box-shadow:inset 0 0 0 2px #000;color:#000}
+.stamp{position:absolute;right:22px;top:20px;font-family:var(--dirt);font-size:34px;color:var(--or);border:4px solid var(--or);padding:2px 12px 0;transform:rotate(12deg);opacity:0;scale:2.2;transition:opacity .3s ease .4s,scale .45s cubic-bezier(.3,1.6,.5,1) .4s;mix-blend-mode:multiply}
+html[dir=rtl] .stamp{right:auto;left:22px;transform:rotate(-12deg)}
+.tk.in .stamp,.rv.in .stamp{opacity:.95;scale:1}
+.open{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-top:8px}
+.open i{width:9px;height:9px;border-radius:50%;background:#1aa34a;box-shadow:0 0 0 4px rgba(26,163,74,.2)}
+
+/* call */
+.call{text-align:center;padding:110px 0 120px;position:relative;overflow:hidden}
+.call .k{font-family:var(--hand);font-size:26px;color:var(--or)}
+.call .num{font-size:clamp(64px,13vw,190px);color:var(--yl);display:inline-block;direction:ltr;margin:6px 0 24px;transition:color .2s}
+.call .num:hover{color:var(--or)}
+.call .row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+footer{border-top:1px solid var(--line);padding:26px 0 calc(100px + env(safe-area-inset-bottom))}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;color:var(--mute);font-size:13px}
+.foot .ig{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--iv)}
+.foot .ig svg{width:20px;height:20px}
+@media (min-width:821px){footer{padding-bottom:26px}}
+
+/* dock */
+.dock{position:fixed;z-index:70;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;gap:8px;transform:translateY(160%);transition:transform .4s cubic-bezier(.2,.9,.3,1)}
+.dock.up{transform:none}
+.dock .btn{flex:1;padding:15px 10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+@media (min-width:821px){.dock{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.big .ln,.hk,.hrow{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand"><img src="assets/img/badge.jpg" alt="Halabi Bites logo"><b>Halabi Bites</b></a>
+  <div class="links"><a href="#kings" data-k="n1">The Kings</a><a href="#branches" data-k="n3">Branches</a></div>
+  <div class="navr">
+    <button class="lang" id="lang">عربي</button>
+    <a class="btn or sm" href="tel:+96176861668" data-k="callS">Call to order</a>
+  </div>
+</nav>
+
+<header class="hero grain" id="top">
+  <video src="assets/smoke.mp4" autoplay muted loop playsinline preload="auto" poster="assets/img/poster.jpg"></video>
+  <div class="shade"></div>
+  <canvas id="embers"></canvas>
+  <div class="bull" aria-hidden="true">
+    <svg viewBox="0 0 200 120"><path class="hn" d="M70 78 C40 78 18 60 10 22 C30 44 48 52 74 56"/><path class="hn" d="M130 78 C160 78 182 60 190 22 C170 44 152 52 126 56"/>
+      <text x="100" y="112" text-anchor="middle" data-k="bullTxt">king of brisket</text></svg>
+  </div>
+  <div class="hint" data-k="hint">touch the fire ↓</div>
+  <div class="hcopy">
+    <p class="hk" data-k="hk">Smoked low &amp; slow · Tariq el Jdideh</p>
+    <h1 class="dirt big" dir="ltr" aria-label="Born from fire">
+      <span class="ln">Born</span><span class="ln">From</span>
+      <span class="ln"><span class="fire flick circ" id="fireC">Fire.<svg viewBox="0 0 100 50" preserveAspectRatio="none"><path pathLength="1" d="M6 30 C2 12 30 3 55 4 C82 5 99 14 96 28 C93 44 60 49 36 46 C14 43 2 36 8 22 C12 14 24 10 30 9"/></svg></span></span>
+    </h1>
+    <div class="hrow">
+      <span class="slogan">مثل الطازة ما في</span>
+      <a class="btn yl" href="tel:+96176861668"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span data-k="call">Call for orders</span></a>
+      <a class="btn gh" href="#kings" data-k="see">See the kings</a>
+    </div>
+  </div>
+</header>
+
+<section class="uw" id="unwrap">
+  <div class="pin grain">
+    <div class="uw-grid">
+      <div class="uw-txt" id="uwTxt">
+        <div class="step on"><span class="n">01</span><h2 class="dirt tr" data-k="s1h">Low <em>&amp;</em> slow.</h2><p class="hand tr" data-k="s1p">Hours in the smoker. No shortcuts.</p></div>
+        <div class="step"><span class="n">02</span><h2 class="dirt tr" data-k="s2h">Wrapped <em>tight.</em></h2><p class="hand tr" data-k="s2p">Foil keeps every drop of juice inside.</p></div>
+        <div class="step"><span class="n">03</span><h2 class="dirt tr" data-k="s3h">Pulled <em>by hand.</em></h2><p class="hand tr" data-k="s3p">Keep scrolling… watch it fall apart.</p></div>
+        <div class="step"><span class="n">04</span><h2 class="dirt tr" data-k="s4h">Fire in <em>every bite.</em></h2><p class="hand tr" data-k="s4p">Made fresh daily. Mtel el tazé ma fi.</p></div>
+      </div>
+      <div class="frame"><span class="tape"></span><canvas id="uwc" width="420" height="746"></canvas></div>
+    </div>
+    <div class="uwbar"><i id="uwbar"></i></div>
+  </div>
+</section>
+
+<section class="sec grain" id="kings">
+  <div class="wrap">
+    <p class="eye rv" data-k="kE">the menu, short &amp; deadly</p>
+    <h2 class="dirt h rv tr" data-k="kH">The 3 <em>Kings.</em></h2>
+    <div class="kings" id="kingsGrid"></div>
+  </div>
+</section>
+
+
+<section class="br-sec" id="branches">
+  <div class="bg" style="background-image:url(assets/img/team.jpg)"></div>
+  <div class="wrap">
+    <p class="eye rv" data-k="bE">the bull pen</p>
+    <h2 class="dirt h rv tr" data-k="bH">Find <em>the fire.</em></h2>
+    <div class="tickets">
+      <div class="tk rv">
+        <span class="k" data-k="t1k">Branch 01 · open</span>
+        <h3 class="dirt" data-k="t1h">Tariq el Jdideh</h3>
+        <div class="ar">بوج المخفر، طريق الجديدة</div>
+        <div class="ph">76 861 668</div>
+        <span class="open"><i></i><span data-k="t1o">Fresh daily</span></span>
+        <div class="row">
+          <a class="btn bk sm" href="tel:+96176861668" data-k="callB">Call</a>
+          <a class="btn bk sm" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ol sm" href="https://www.google.com/maps/search/?api=1&query=Halabi+Bites+Tariq+el+Jdideh+Beirut" target="_blank" rel="noopener" data-k="dir">Take me there</a>
+        </div>
+      </div>
+      <div class="tk rv">
+        <span class="stamp" data-k="soon">Soon</span>
+        <span class="k" data-k="t2k">Branch 02 · coming soon</span>
+        <h3 class="dirt" data-k="t2h">Kaskas</h3>
+        <div class="ar">قريباً بقصقص</div>
+        <p style="font-family:var(--hand);font-size:20px;margin-top:6px" data-k="t2p">The fire is spreading. Stay tuned on Instagram.</p>
+        <div class="row"><a class="btn bk sm" href="https://www.instagram.com/halabibites/" target="_blank" rel="noopener" data-k="follow">Follow for the opening</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="call grain">
+  <div class="wrap">
+    <p class="k rv" data-k="cK">jou3an? careful, it's hot</p>
+    <a class="dirt num rv" href="tel:+96176861668">76 86 16 68</a>
+    <div class="row rv">
+      <a class="btn or" href="tel:+96176861668" data-k="call2">Call for orders</a>
+      <a class="btn yl" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="ig" href="https://www.instagram.com/halabibites/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>halabibites</a>
+    <span data-k="foot">Halabi Bites · Born from fire · Tariq el Jdideh, Beirut</span>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <a class="btn or" href="tel:+96176861668" data-k="dCall">Call</a>
+  <a class="btn yl" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+(() => {
+  const FR = ["assets/unwrap/f001.jpg", "assets/unwrap/f002.jpg", "assets/unwrap/f003.jpg", "assets/unwrap/f004.jpg", "assets/unwrap/f005.jpg", "assets/unwrap/f006.jpg", "assets/unwrap/f007.jpg", "assets/unwrap/f008.jpg", "assets/unwrap/f009.jpg", "assets/unwrap/f010.jpg", "assets/unwrap/f011.jpg", "assets/unwrap/f012.jpg", "assets/unwrap/f013.jpg", "assets/unwrap/f014.jpg", "assets/unwrap/f015.jpg", "assets/unwrap/f016.jpg", "assets/unwrap/f017.jpg", "assets/unwrap/f018.jpg", "assets/unwrap/f019.jpg", "assets/unwrap/f020.jpg", "assets/unwrap/f021.jpg", "assets/unwrap/f022.jpg", "assets/unwrap/f023.jpg", "assets/unwrap/f024.jpg", "assets/unwrap/f025.jpg", "assets/unwrap/f026.jpg", "assets/unwrap/f027.jpg", "assets/unwrap/f028.jpg", "assets/unwrap/f029.jpg", "assets/unwrap/f030.jpg", "assets/unwrap/f031.jpg", "assets/unwrap/f032.jpg", "assets/unwrap/f033.jpg", "assets/unwrap/f034.jpg", "assets/unwrap/f035.jpg", "assets/unwrap/f036.jpg", "assets/unwrap/f037.jpg", "assets/unwrap/f038.jpg", "assets/unwrap/f039.jpg", "assets/unwrap/f040.jpg", "assets/unwrap/f041.jpg", "assets/unwrap/f042.jpg", "assets/unwrap/f043.jpg", "assets/unwrap/f044.jpg", "assets/unwrap/f045.jpg", "assets/unwrap/f046.jpg", "assets/unwrap/f047.jpg", "assets/unwrap/f048.jpg", "assets/unwrap/f049.jpg", "assets/unwrap/f050.jpg", "assets/unwrap/f051.jpg", "assets/unwrap/f052.jpg", "assets/unwrap/f053.jpg", "assets/unwrap/f054.jpg", "assets/unwrap/f055.jpg", "assets/unwrap/f056.jpg", "assets/unwrap/f057.jpg", "assets/unwrap/f058.jpg", "assets/unwrap/f059.jpg", "assets/unwrap/f060.jpg", "assets/unwrap/f061.jpg", "assets/unwrap/f062.jpg", "assets/unwrap/f063.jpg", "assets/unwrap/f064.jpg", "assets/unwrap/f065.jpg", "assets/unwrap/f066.jpg", "assets/unwrap/f067.jpg", "assets/unwrap/f068.jpg", "assets/unwrap/f069.jpg", "assets/unwrap/f070.jpg", "assets/unwrap/f071.jpg", "assets/unwrap/f072.jpg", "assets/unwrap/f073.jpg", "assets/unwrap/f074.jpg", "assets/unwrap/f075.jpg"];
+  const IMG = {"brisket": "assets/img/brisket.jpg", "mushroom": "assets/img/mushroom.jpg"};
+  const PH = '96176861668';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- text ---------- */
+  const AR = {
+    n1: 'الملوك', n2: 'العدّة', n3: 'الفروع', callS: 'اتصل واطلب', call: 'اتصل واطلب', see: 'شوف الملوك', hk: 'مدخّن على مهل · طريق الجديدة', hint: 'لمّس النار ↓', bullTxt: 'ملك البريسكت',
+    s1h: 'على <em>مهل.</em>', s1p: 'ساعات بالمدخنة. بلا اختصارات.', s2h: 'ملفوف <em>منيح.</em>', s2p: 'الفويل بيخلّي كل نقطة عصير جوّا.', s3h: 'بينفرط <em>بالإيد.</em>', s3p: 'كفّي سكرول… وشوفه كيف بينفرط.', s4h: 'نار <em>بكل لقمة.</em>', s4p: 'طازة كل يوم. مثل الطازة ما في.',
+    kE: 'المنيو، قصير وقاتل', kH: 'الملوك <em>التلاتة.</em>', pE: 'براند إلو قرون', pH: 'ملفوف <em>بالنار.</em>', pP: 'كل طلبية بتطلع لابسة على المناسبة.', drag: '← اسحب →',
+    bE: 'وكر التور', bH: 'لاقي <em>النار.</em>', t1k: 'فرع 01 · فاتح', t1h: 'طريق الجديدة', t1o: 'طازة كل يوم', callB: 'اتصل', dir: 'خدني لهونيك',
+    soon: 'قريباً', t2k: 'فرع 02 · قريباً', t2h: 'قصقص', t2p: 'النار عم تنتشر. تابعونا عالإنستغرام.', follow: 'تابع للافتتاح',
+    cK: 'جوعان؟ انتبه، سخن', call2: 'اتصل واطلب', foot: 'Halabi Bites · وُلد من النار · طريق الجديدة، بيروت', dCall: 'اتصل',
+    order: 'اطلب عالواتساب', spicy: 'حار 🔥🔥🔥', sig: 'الأصلي', mush: 'كريمي', approx: '≈ $10', wa: 'مرحبا Halabi Bites! بدّي اطلب 🔥', waItem: n => `مرحبا Halabi Bites! بدّي ${n} 🔥`, langBtn: 'EN'
+  };
+  const EN = { order: 'Order on WhatsApp', spicy: 'Hot 🔥🔥🔥', sig: 'The original', mush: 'Creamy one', approx: '≈ $10', wa: 'Marhaba Halabi Bites! Badde otlob 🔥', waItem: n => `Marhaba Halabi Bites! Badde ${n} 🔥`, langBtn: 'عربي',
+    pk: { brisketbox: 'brisket box', burgerbox: 'burger box', combobox: 'combo box', sandwich: 'sandwich box', fries: 'fries box', kit: 'cutlery kit & wipes', bag: 'handle bag' } };
+  document.querySelectorAll('[data-k]').forEach(el => EN[el.dataset.k] = EN[el.dataset.k] || el.innerHTML);
+  let lang = 'en'; try { lang = localStorage.getItem('hb-lang') || 'en'; } catch (e) {}
+  const D = () => lang === 'ar' ? AR : EN;
+
+  /* ---------- kings ---------- */
+  const KINGS = [
+    { n: 'Smoked Brisket', i: 'Caramelized onion, BBQ sauce, mozzarella, special sauce, honey', img: 'brisket', tag: 'sig', note: 'the original' },
+    { n: 'Brisket Hot Spicy', i: 'Caramelized onion, BBQ sauce, mozzarella, special spicy sauce, honey', img: 'brisket', tag: 'spicy', hot: true, note: 'careful, it\'s hot!' },
+    { n: 'Brisket Mushroom', i: 'Caramelized onion, mushroom sauce, emmental cheese, rocca, mayonnaise', img: 'mushroom', tag: 'mush', note: 'melty' }
+  ];
+  function buildKings() {
+    const d = D();
+    document.getElementById('kingsGrid').innerHTML = KINGS.map((k, i) => `
+      <article class="king rv in">
+        <div class="ph${k.hot ? ' hot' : ''}"><img src="${IMG[k.img]}" alt="${k.n}" loading="lazy"><span class="heat">${d[k.tag]}</span></div>
+        <div class="bd">
+          <h3 class="dirt">${k.n}</h3>
+          <p class="ing">${k.i}</p>
+          <div class="row">
+            <div class="price"><b>900,000 LL</b><small>${d.approx}</small></div>
+            <a class="btn or sm" href="https://wa.me/${PH}?text=${encodeURIComponent(d.waItem(k.n))}" target="_blank" rel="noopener">${d.order}</a>
+          </div>
+        </div>
+      </article>`).join('');
+  }
+
+  function buildKit() {}
+
+  /* ---------- hand-drawn circles ---------- */
+  const circIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), 250); circIO.unobserve(e.target); } }), { threshold: .6 });
+
+  /* ---------- embers ---------- */
+  const cv = document.getElementById('embers'), cx = cv.getContext('2d');
+  let W = 0, H = 0, dpr = Math.min(2, devicePixelRatio || 1), parts = [];
+  function size() { const r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  size(); addEventListener('resize', size);
+  function spawn(x, y, burst) {
+    parts.push({ x, y, vx: (Math.random() - .5) * (burst ? 3 : .6), vy: -(Math.random() * (burst ? 3.2 : 1.4) + .6), r: Math.random() * (burst ? 2.6 : 2) + .6,
+      life: 0, max: 60 + Math.random() * (burst ? 70 : 140), hue: 18 + Math.random() * 28 });
+  }
+  let heroVisible = true;
+  new IntersectionObserver(es => heroVisible = es[0].isIntersecting).observe(document.getElementById('top'));
+  function tick() {
+    if (heroVisible) {
+      if (parts.length < (innerWidth < 700 ? 70 : 140)) for (let i = 0; i < 2; i++) spawn(Math.random() * W, H + 10, false);
+      cx.clearRect(0, 0, W, H); cx.globalCompositeOperation = 'lighter';
+      parts = parts.filter(p => p.life < p.max);
+      for (const p of parts) {
+        p.life++; p.x += p.vx + Math.sin((p.life + p.y) * .05) * .35; p.y += p.vy; p.vy *= .995;
+        const a = Math.max(0, 1 - p.life / p.max), g = cx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        g.addColorStop(0, `hsla(${p.hue},100%,65%,${a})`); g.addColorStop(1, `hsla(${p.hue},100%,50%,0)`);
+        cx.fillStyle = g; cx.beginPath(); cx.arc(p.x, p.y, p.r * 4, 0, 7); cx.fill();
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduce) tick();
+  const hero = document.getElementById('top');
+  const burstAt = (x, y, n) => { const r = cv.getBoundingClientRect(); for (let i = 0; i < n; i++) spawn(x - r.left, y - r.top, true); };
+  hero.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') burstAt(e.clientX, e.clientY, 2); });
+  hero.addEventListener('pointerdown', e => burstAt(e.clientX, e.clientY, 26));
+
+  /* ---------- unwrap (scroll-scrubbed frames) ---------- */
+  const uw = document.getElementById('unwrap'), uc = document.getElementById('uwc'), ux = uc.getContext('2d');
+  const steps = [...document.querySelectorAll('#uwTxt .step')], ubar = document.getElementById('uwbar');
+  const frames = FR.map(src => { const im = new Image(); im.decoding = 'async'; im.src = src; return im; });
+  let lastF = -1, lastS = 0;
+  function drawF(i) { const im = frames[i]; if (!im.complete) { im.onload = () => { if (lastF === i) ux.drawImage(im, 0, 0, uc.width, uc.height); }; return; } ux.drawImage(im, 0, 0, uc.width, uc.height); }
+  function unwrap() {
+    const r = uw.getBoundingClientRect(), span = uw.offsetHeight - innerHeight, p = Math.min(1, Math.max(0, -r.top / span));
+    const f = Math.min(frames.length - 1, Math.round(p * (frames.length - 1)));
+    if (f !== lastF) { lastF = f; drawF(f); }
+    const s = Math.min(steps.length - 1, Math.floor(p * steps.length));
+    if (s !== lastS) { steps.forEach((e, i) => e.classList.toggle('on', i === s)); lastS = s; }
+    ubar.style.setProperty('--p', p);
+  }
+  frames[0].onload = () => { if (lastF <= 0) { lastF = 0; drawF(0); } };
+
+  /* ---------- language ---------- */
+  function apply(l) {
+    lang = l; const d = D();
+    document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-k]').forEach(el => { const v = d[el.dataset.k]; if (typeof v === 'string') el.innerHTML = v; });
+    document.getElementById('lang').textContent = d.langBtn;
+    const wa = 'https://wa.me/' + PH + '?text=' + encodeURIComponent(d.wa);
+    document.querySelectorAll('[data-wa]').forEach(a => a.href = wa);
+    buildKings(); buildKit();
+    try { localStorage.setItem('hb-lang', l); } catch (e) {}
+  }
+  document.getElementById('lang').addEventListener('click', () => apply(lang === 'en' ? 'ar' : 'en'));
+
+  /* ---------- scroll ---------- */
+  const nav = document.getElementById('nav'), dock = document.getElementById('dock');
+  let tk = false;
+  function onScroll() { tk = false; nav.classList.toggle('solid', scrollY > 40); dock.classList.toggle('up', scrollY > innerHeight * .7); unwrap(); }
+  addEventListener('scroll', () => { if (!tk) { tk = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', onScroll);
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+
+  apply(lang); onScroll();
+  requestAnimationFrame(() => { document.body.classList.add('loaded'); setTimeout(() => document.getElementById('fireC').classList.add('on'), 1100); });
+})();
+</script>
+</body>
+</html>
