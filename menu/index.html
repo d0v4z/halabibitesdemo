@@ -62,6 +62,7 @@ html[lang=ar] .cat h2{font-family:var(--ar);font-weight:700}
 .cat h2 small{display:block;font-family:var(--hand);font-size:20px;color:var(--yl);margin-top:4px}
 .grid{display:grid;gap:16px;margin-top:22px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
 .card{position:relative;background:var(--ch);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transform-style:preserve-3d;transition:transform .2s ease-out,border-color .3s,box-shadow .3s;will-change:transform}
+.card:has(.o-step.sold){opacity:.5}
 .card:has(.o-step.on){border-color:var(--or);box-shadow:0 20px 50px -20px rgba(235,99,38,.6)}
 .card .vis{position:relative;aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,#2a1a10,#000 70%);overflow:hidden;perspective:700px}
 .card .vis .ph{width:100%;height:100%;object-fit:cover;transition:transform .6s}
@@ -180,12 +181,16 @@ footer a{color:var(--yl)}
 
   const flat = [];
   MENU.forEach(c => c.items.forEach(it => { it.cat = c; flat.push(it); }));
+  /* admin panel changes (price, photo, sold out) saved in this browser */
+  const OVR = Order.overrides('hb-cart');
+  flat.forEach(it => { const o = OVR[it.id]; if (!o) return; if (o.p != null) it.p = o.p; if (o.img) it.ph = o.img; it.off = !!o.off; });
+  const src = ph => /^data:/.test(ph) ? ph : I + ph;
 
   function build() {
     document.getElementById('cats').innerHTML = MENU.map((c, i) => `<button data-c="${c.id}" class="${i ? '' : 'on'}"><img src="${P}${c.pk ? c.pk + '.jpg' : c.icon}" alt="">${L(c)}</button>`).join('');
     document.getElementById('menu').innerHTML = MENU.map(c => `<section class="cat" id="c-${c.id}"><h2>${L(c)}<small>${L(c.sub)}</small></h2><div class="grid">` +
       c.items.map(it => `<article class="card" data-tilt data-oimg>
-        <div class="vis">${typeof it.ph === 'string' ? `<img class="ph" src="${I}${it.ph}" alt="${nm(it)}" loading="lazy">` : ''}<img class="pk${it.pkf ? ' svg' : ''}" src="${P}${it.pkf || c.pk + '.jpg'}" alt="" loading="lazy">
+        <div class="vis">${typeof it.ph === 'string' ? `<img class="ph" src="${src(it.ph)}" alt="${nm(it)}" loading="lazy">` : ''}<img class="pk${it.pkf ? ' svg' : ''}" src="${P}${it.pkf || c.pk + '.jpg'}" alt="" loading="lazy">
           ${it.tag ? `<span class="tag${it.hot ? ' hot' : ''}">${L(it.tag)}</span>` : ''}</div>
         <div class="bd"><h3>${nm(it)}</h3>${it.d ? `<p>${L(it.d)}</p>` : ''}
           <div class="row"><div class="pr"><b>${it.p.toLocaleString('en-US')} LL</b><small>≈ ${usd(it.p)}</small></div><div class="o-step" data-oid="${it.id}"></div></div></div>
@@ -239,7 +244,7 @@ footer a{color:var(--yl)}
     t: { en: { yourOrder: 'Your bag', viewOrder: 'Your bag', placed: 'Bag is packed!', thanks: 'Sahtein', s2: 'On the fire', how: 'How do you want it?', deliveryNote: 'Delivery around Tariq el Jdideh & Beirut.' },
          ar: { yourOrder: 'كيسك', viewOrder: 'كيسك', placed: 'كيسك جاهز!', thanks: 'صحتين', s2: 'عالنار', deliveryNote: 'ديليفري بطريق الجديدة وبيروت.' } }
   });
-  Order.register(flat.map(it => { const pk = P + (it.pkf || it.cat.pk + '.jpg'); return { id: it.id, n: it.en, ar: it.ar, p: it.p, img: typeof it.ph === 'string' ? I + it.ph : pk, fly: pk, pkKey: it.pkf || it.cat.pk, svg: !!it.pkf }; }));
+  Order.register(flat.map(it => { const pk = P + (it.pkf || it.cat.pk + '.jpg'); return { id: it.id, n: it.en, ar: it.ar, p: it.p, img: typeof it.ph === 'string' ? src(it.ph) : pk, off: !!it.off, fly: pk, pkKey: it.pkf || it.cat.pk, svg: !!it.pkf }; }));
   apply(lang);
 })();
 </script>
