@@ -329,9 +329,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 calc(100px + env(safe-are
     bE: 'وكر التور', bH: 'لاقي <em>النار.</em>', t1k: 'فرع 01 · فاتح', t1h: 'طريق الجديدة', t1o: 'طازة كل يوم', callB: 'اتصل', dir: 'خدني لهونيك',
     soon: 'قريباً', t2k: 'فرع 02 · قريباً', t2h: 'قصقص', t2p: 'النار عم تنتشر. تابعونا عالإنستغرام.', follow: 'تابع للافتتاح',
     cK: 'جوعان؟ انتبه، سخن', call2: 'اتصل واطلب', foot: 'Halabi Bites · وُلد من النار · طريق الجديدة، بيروت', dCall: 'اتصل',
-    order: 'اطلب عالواتساب', spicy: 'حار 🔥🔥🔥', sig: 'الأصلي', mush: 'كريمي', approx: '≈ $10', wa: 'مرحبا Halabi Bites! بدّي اطلب 🔥', waItem: n => `مرحبا Halabi Bites! بدّي ${n} 🔥`, langBtn: 'EN'
+    order: 'اطلب عالواتساب', spicy: 'حار', sig: 'الأصلي', mush: 'كريمي', approx: '≈ $10', wa: 'مرحبا Halabi Bites! بدّي اطلب', waItem: n => `مرحبا Halabi Bites! بدّي ${n}`, langBtn: 'EN'
   };
-  const EN = { order: 'Order on WhatsApp', spicy: 'Hot 🔥🔥🔥', sig: 'The original', mush: 'Creamy one', approx: '≈ $10', wa: 'Marhaba Halabi Bites! Badde otlob 🔥', waItem: n => `Marhaba Halabi Bites! Badde ${n} 🔥`, langBtn: 'عربي',
+  const EN = { order: 'Order on WhatsApp', spicy: 'Hot', sig: 'The original', mush: 'Creamy one', approx: '≈ $10', wa: 'Marhaba Halabi Bites! Badde otlob', waItem: n => `Marhaba Halabi Bites! Badde ${n}`, langBtn: 'عربي',
     pk: { brisketbox: 'brisket box', burgerbox: 'burger box', combobox: 'combo box', sandwich: 'sandwich box', fries: 'fries box', kit: 'cutlery kit & wipes', bag: 'handle bag' } };
   document.querySelectorAll('[data-k]').forEach(el => EN[el.dataset.k] = EN[el.dataset.k] || el.innerHTML);
   let lang = 'en'; try { lang = localStorage.getItem('hb-lang') || 'en'; } catch (e) {}

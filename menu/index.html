@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Gochi+Hand&family=Montserrat:wght@400;600;800&family=Marhey:wght@500;700&family=Cairo:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/order.css">
+<link rel="stylesheet" href="../assets/halabi-order.css">
 <style>
 :root{--or:#eb6326;--yl:#f5a620;--iv:#fae0ce;--bk:#000;--ch:#121110;--sm:#1d1b19;--mute:rgba(250,224,206,.6);--line:rgba(250,224,206,.13);
   --dirt:"Rubik Dirt","Impact","Arial Black",sans-serif;--hand:"Gochi Hand","Comic Sans MS",cursive;--body:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;--ar:"Marhey","Cairo",sans-serif;
@@ -51,7 +52,7 @@ html[lang=ar] .mh h1{font-family:var(--ar);font-weight:700;line-height:1.15}
 .cats .wrap{display:flex;gap:8px;overflow-x:auto;padding:10px 0;scrollbar-width:none}.cats .wrap::-webkit-scrollbar{display:none}
 .cats button{flex:none;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:6px;background:var(--sm);border:1px solid var(--line);font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:all .2s}
 html[dir=rtl] .cats button{padding:8px 8px 8px 14px}
-.cats button img{width:30px;height:30px;object-fit:contain;mix-blend-mode:lighten}
+.cats button img{width:30px;height:30px;object-fit:contain;mix-blend-mode:lighten}.cats button img[src$='.svg']{mix-blend-mode:normal}
 .cats button.on{background:var(--or);color:#000;border-color:var(--or)}
 
 /* sections + cards */
@@ -65,6 +66,7 @@ html[lang=ar] .cat h2{font-family:var(--ar);font-weight:700}
 .card .vis{position:relative;aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,#2a1a10,#000 70%);overflow:hidden;perspective:700px}
 .card .vis .ph{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .card:hover .vis .ph{transform:scale(1.06)}
+.card .vis .pk.svg{mix-blend-mode:normal}
 .card .vis .pk{position:absolute;width:62%;left:19%;top:12%;height:76%;object-fit:contain;mix-blend-mode:lighten;filter:drop-shadow(0 20px 20px rgba(0,0,0,.6));animation:bob 4s ease-in-out infinite;transform:translateZ(40px)}
 .card .vis .ph + .pk{width:34%;height:42%;left:auto;right:4%;top:auto;bottom:4%;animation:none;transform:rotate(-8deg)}
 html[dir=rtl] .card .vis .ph + .pk{right:auto;left:4%;transform:rotate(8deg)}
@@ -89,16 +91,19 @@ html[lang=ar] .card h3{font-family:var(--ar);font-weight:700}
 .o-fly-pk img{object-fit:contain;mix-blend-mode:lighten;filter:drop-shadow(0 10px 14px rgba(0,0,0,.7))}
 
 /* 3D packing scene in the cart */
-.pack{position:relative;height:250px;margin:-6px -20px 14px;perspective:900px;overflow:hidden;background:radial-gradient(ellipse at 50% 85%,rgba(235,99,38,.28),transparent 60%),#000;border-bottom:1px solid var(--line)}
-.pack .stage{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s ease-out}
-.pack .floor{position:absolute;left:10%;right:10%;bottom:18px;height:40px;border-radius:50%;background:radial-gradient(rgba(235,99,38,.35),transparent 70%);transform:rotateX(70deg)}
-.pack .bag{position:absolute;left:50%;bottom:18px;width:150px;height:170px;margin-left:-75px;transform:translateZ(0);object-fit:contain;mix-blend-mode:lighten;filter:drop-shadow(0 20px 20px rgba(0,0,0,.7))}
-.pack .it{position:absolute;bottom:34px;width:86px;height:86px;transform-style:preserve-3d;animation:drop .7s cubic-bezier(.3,1.5,.5,1) both}
-.pack .it img{width:100%;height:100%;object-fit:contain;mix-blend-mode:lighten;filter:drop-shadow(0 14px 14px rgba(0,0,0,.7));animation:float 3.6s ease-in-out infinite}
-.pack .it b{position:absolute;top:2px;right:6px;min-width:26px;height:26px;border-radius:6px;background:var(--or);color:#000;font-size:13px;display:grid;place-items:center;font-weight:900;font-family:var(--body)}
-@keyframes drop{from{transform:translate3d(var(--x),-260px,var(--z)) rotate(-30deg);opacity:0}to{transform:translate3d(var(--x),0,var(--z)) rotate(var(--r));opacity:1}}
-@keyframes float{50%{transform:translateY(-7px) rotate(2deg)}}
-.pack .cap{position:absolute;top:12px;left:0;right:0;text-align:center;font-family:var(--hand);font-size:20px;color:var(--yl)}
+.pack{position:relative;height:210px;margin:-16px -20px 16px;perspective:900px;overflow:hidden;background:radial-gradient(ellipse at 50% 100%,rgba(235,99,38,.32),transparent 65%),#000;border-bottom:3px solid var(--or)}
+.pack .cap{position:absolute;top:10px;left:0;right:0;text-align:center;font-family:var(--hand);font-size:20px;color:var(--yl);z-index:2}
+.pack .stage{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(14deg);transition:transform .3s ease-out}
+.pack .counter{position:absolute;left:-10%;right:-10%;bottom:-40px;height:110px;background:linear-gradient(#2a1a10,#0d0805);transform:rotateX(72deg);transform-origin:50% 100%;box-shadow:0 -2px 0 rgba(245,166,32,.4)}
+.pack .line{position:absolute;left:12px;right:12px;bottom:34px;display:flex;align-items:flex-end;justify-content:center;gap:8px;transform-style:preserve-3d}
+.pack .it{position:relative;flex:0 1 calc((100% - 8px * (var(--n) - 1)) / var(--n));max-width:92px;aspect-ratio:1;animation:drop .6s cubic-bezier(.3,1.5,.5,1) both}
+.pack .it img{width:100%;height:100%;object-fit:contain;mix-blend-mode:lighten;filter:drop-shadow(0 12px 10px rgba(0,0,0,.8))}
+.pack .it.svg img{mix-blend-mode:normal;padding:10%}
+.pack .it b{position:absolute;top:-6px;inset-inline-end:-2px;min-width:24px;height:24px;padding:0 5px;background:var(--yl);color:#000;font-size:13px;display:grid;place-items:center;font-weight:900;font-family:var(--body);transform:rotate(6deg)}
+.pack .bagit{max-width:118px;flex-basis:calc((100% - 8px * (var(--n) - 1)) / var(--n) * 1.25)}
+.pack .bagit img{animation:bagWob 2.4s ease-in-out infinite}
+@keyframes drop{from{transform:translateY(-200px) rotate(-25deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes bagWob{50%{transform:rotate(-2deg) translateY(-3px)}}
 .done-bag{position:relative;width:170px;height:190px;margin:0 auto;animation:bagIn .9s cubic-bezier(.3,1.6,.5,1) both}
 .done-bag img{width:100%;height:100%;object-fit:contain;mix-blend-mode:lighten}
 .done-bag .seal{position:absolute;left:50%;top:22%;transform:translateX(-50%) rotate(-12deg) scale(0);background:var(--yl);color:#000;font-family:var(--dirt);font-size:20px;padding:4px 12px;border-radius:4px;animation:seal .5s .7s cubic-bezier(.3,1.8,.5,1) forwards;white-space:nowrap}
@@ -139,7 +144,7 @@ footer a{color:var(--yl)}
   const MENU = [
     { id: 'kings', en: 'The Kings', ar: 'الملوك', sub: { en: 'smoked brisket', ar: 'بريسكت مدخّن' }, pk: 'brisketbox', items: [
       { id: 'brisket', en: 'Smoked Brisket', ar: 'بريسكت مدخّن', d: { en: 'Caramelized onion, BBQ sauce, mozzarella, special sauce, honey', ar: 'بصل مكرمل، صوص باربكيو، موزاريلا، صوص خاص، عسل' }, p: 900000, ph: 'brisket.jpg', tag: { en: 'the original', ar: 'الأصلي' } },
-      { id: 'brisket-hot', en: 'Brisket Hot Spicy', ar: 'بريسكت حار', d: { en: 'Caramelized onion, BBQ sauce, mozzarella, special spicy sauce, honey', ar: 'بصل مكرمل، صوص باربكيو، موزاريلا، صوص حار خاص، عسل' }, p: 900000, ph: 'brisket.jpg', tag: { en: 'hot 🔥', ar: 'حار 🔥' }, hot: true },
+      { id: 'brisket-hot', en: 'Brisket Hot Spicy', ar: 'بريسكت حار', d: { en: 'Caramelized onion, BBQ sauce, mozzarella, special spicy sauce, honey', ar: 'بصل مكرمل، صوص باربكيو، موزاريلا، صوص حار خاص، عسل' }, p: 900000, ph: 'brisket.jpg', tag: { en: 'hot', ar: 'حار' }, hot: true },
       { id: 'brisket-mush', en: 'Brisket Mushroom', ar: 'بريسكت مشروم', d: { en: 'Caramelized onion, mushroom sauce, emmental cheese, rocca, mayonnaise', ar: 'بصل مكرمل، صوص مشروم، جبنة إمنتال، روكا، مايونيز' }, p: 900000, ph: 'mushroom.jpg', tag: { en: 'melty', ar: 'بيدوب' } }
     ] },
     { id: 'burgers', en: 'Burgers', ar: 'برغر', sub: { en: 'serious bites', ar: 'عضّات جدّية' }, pk: 'burgerbox', items: [
@@ -157,16 +162,16 @@ footer a{color:var(--yl)}
       { id: 'fries', en: 'Salty Side Fries', ar: 'بطاطا', d: { en: 'Crispy fries, house salt', ar: 'بطاطا مقرمشة، ملح البيت' }, p: 270000, ph: true },
       { id: 'brisket-fries', en: 'Loaded Brisket Fries', ar: 'بطاطا بريسكت', d: { en: 'Fries, brisket bits, cheese sauce, BBQ', ar: 'بطاطا، قطع بريسكت، صوص جبنة، باربكيو' }, p: 630000, ph: true }
     ] },
-    { id: 'drinks', en: 'Drinks', ar: 'مشروبات', sub: { en: 'cool it down', ar: 'برّد' }, emo: '🥤', items: [
-      { id: 'soft', en: 'Soft Drink', ar: 'مشروب غازي', d: null, p: 135000, ph: true, emo: '🥤' },
-      { id: 'water', en: 'Water', ar: 'مي', d: null, p: 90000, ph: true, emo: '💧' }
+    { id: 'drinks', en: 'Drinks', ar: 'مشروبات', sub: { en: 'cool it down', ar: 'برّد' }, icon: 'cup.svg', items: [
+      { id: 'soft', en: 'Soft Drink', ar: 'مشروب غازي', d: null, p: 135000, ph: true, pkf: 'cup.svg' },
+      { id: 'water', en: 'Water', ar: 'مي', d: null, p: 90000, ph: true, pkf: 'bottle.svg' }
     ] }
   ];
   const TXT = {
     en: { home: 'Home', k: 'Smoked low &amp; slow', h1: 'The<span>Menu.</span>', p: 'Pick your fire. Everything goes into the bag, packed hot, from Tariq el Jdideh to your door.', note: 'Prices in LBP with the dollar equivalent.', langBtn: 'عربي',
-      bagCap: 'packed hot 🔥', kit: 'cutlery kit & wipes', sealed: 'PACKED HOT' },
+      bagCap: 'packing your bag', kit: 'cutlery kit & wipes', sealed: 'PACKED HOT' },
     ar: { home: 'الرئيسية', k: 'مدخّن عالهادي', h1: 'المنيو<span>.</span>', p: 'نقّي نارك. كل شي بينحطّ بالكيس سخن، من طريق الجديدة لعند بابك.', note: 'الأسعار بالليرة مع ما يعادلها بالدولار.', langBtn: 'EN',
-      bagCap: 'منحضّرو سخن 🔥', kit: 'كيت شوك ومحارم', sealed: 'جاهز سخن' }
+      bagCap: 'عم نوضّب كيسك', kit: 'كيت شوك ومحارم', sealed: 'جاهز سخن' }
   };
   let lang = 'en'; try { lang = localStorage.getItem('hb-lang') || 'en'; } catch (e) {}
   const L = (o) => o ? (o[lang] || o.en) : '';
@@ -177,10 +182,10 @@ footer a{color:var(--yl)}
   MENU.forEach(c => c.items.forEach(it => { it.cat = c; flat.push(it); }));
 
   function build() {
-    document.getElementById('cats').innerHTML = MENU.map((c, i) => `<button data-c="${c.id}" class="${i ? '' : 'on'}">${c.pk ? `<img src="${P}${c.pk}.jpg" alt="">` : `<span style="font-size:22px;width:30px;text-align:center">${c.emo}</span>`}${L(c)}</button>`).join('');
+    document.getElementById('cats').innerHTML = MENU.map((c, i) => `<button data-c="${c.id}" class="${i ? '' : 'on'}"><img src="${P}${c.pk ? c.pk + '.jpg' : c.icon}" alt="">${L(c)}</button>`).join('');
     document.getElementById('menu').innerHTML = MENU.map(c => `<section class="cat" id="c-${c.id}"><h2>${L(c)}<small>${L(c.sub)}</small></h2><div class="grid">` +
       c.items.map(it => `<article class="card" data-tilt data-oimg>
-        <div class="vis">${typeof it.ph === 'string' ? `<img class="ph" src="${I}${it.ph}" alt="${nm(it)}" loading="lazy">` : ''}${c.pk ? `<img class="pk" src="${P}${c.pk}.jpg" alt="" loading="lazy">` : `<span style="position:absolute;inset:0;display:grid;place-items:center;font-size:80px">${it.emo}</span>`}
+        <div class="vis">${typeof it.ph === 'string' ? `<img class="ph" src="${I}${it.ph}" alt="${nm(it)}" loading="lazy">` : ''}<img class="pk${it.pkf ? ' svg' : ''}" src="${P}${it.pkf || c.pk + '.jpg'}" alt="" loading="lazy">
           ${it.tag ? `<span class="tag${it.hot ? ' hot' : ''}">${L(it.tag)}</span>` : ''}</div>
         <div class="bd"><h3>${nm(it)}</h3>${it.d ? `<p>${L(it.d)}</p>` : ''}
           <div class="row"><div class="pr"><b>${it.p.toLocaleString('en-US')} LL</b><small>≈ ${usd(it.p)}</small></div><div class="o-step" data-oid="${it.id}"></div></div></div>
@@ -204,17 +209,16 @@ footer a{color:var(--yl)}
   addEventListener('scroll', () => { let cur = MENU[0].id; MENU.forEach(c => { const s = document.getElementById('c-' + c.id); if (s && s.getBoundingClientRect().top < 200) cur = c.id; });
     document.querySelectorAll('#cats button').forEach(b => b.classList.toggle('on', b.dataset.c === cur)); }, { passive: true });
 
-  /* 3D packing scene inside the cart */
-  const SLOTS = [[-135, -40, -12], [135, -40, 12], [-95, 70, 8], [95, 70, -8], [-170, -90, 16], [170, -90, -14]];
+  /* 3D packing scene inside the cart: packages lined up on the counter, the bag at the end */
   function packScene(cart, items) {
     const groups = {};
-    Object.entries(cart).forEach(([id, q]) => { const it = items[id]; if (!it) return; const k = it.pkKey || 'x'; groups[k] = groups[k] || { img: it.fly, emo: it.emo, q: 0 }; groups[k].q += q; });
-    const g = Object.values(groups).slice(0, 6);
-    return `<div class="pack" id="pack"><div class="cap">${TXT[lang].bagCap}</div><div class="stage" id="pstage"><div class="floor"></div>
-      ${g.map((x, i) => `<div class="it" style="left:calc(50% - 43px);--x:${SLOTS[i][0]}px;--z:${SLOTS[i][1]}px;--r:${SLOTS[i][2]}deg;animation-delay:${i * .08}s">${x.img ? `<img src="${x.img}" alt="">` : `<span style="font-size:60px;display:grid;place-items:center;height:100%">${x.emo}</span>`}<b>${x.q}</b></div>`).join('')}
-      <img class="bag" src="${P}bag.jpg" alt=""></div></div>`;
+    Object.entries(cart).forEach(([id, q]) => { const it = items[id]; if (!it) return; const k = it.pkKey; groups[k] = groups[k] || { img: it.fly, svg: it.svg, q: 0 }; groups[k].q += q; });
+    const g = Object.values(groups);
+    return `<div class="pack"><div class="cap">${TXT[lang].bagCap}</div><div class="stage" id="pstage"><div class="counter"></div><div class="line" style="--n:${g.length + 1}">
+      ${g.map((x, i) => `<div class="it${x.svg ? ' svg' : ''}" style="animation-delay:${i * .07}s"><img src="${x.img}" alt=""><b>${x.q}</b></div>`).join('')}
+      <div class="it bagit" style="animation-delay:${g.length * .07}s"><img src="${P}bag.jpg" alt=""></div></div></div></div>`;
   }
-  document.addEventListener('pointermove', e => { const s = document.getElementById('pstage'); if (!s) return; const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5; s.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 6}deg)`; }, { passive: true });
+  document.addEventListener('pointermove', e => { const s = document.getElementById('pstage'); if (!s) return; const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5; s.style.transform = `rotateX(${14 - y * 8}deg) rotateY(${x * 14}deg)`; }, { passive: true });
 
   function apply(l) {
     lang = l; document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
@@ -226,16 +230,16 @@ footer a{color:var(--yl)}
   document.getElementById('lang').onclick = () => apply(lang === 'en' ? 'ar' : 'en');
 
   Order.init({
-    key: 'hb-cart', base: 'lbp', rate: RATE, delivery: 180000, lang: () => lang,
+    key: 'hb-cart', base: 'lbp', rate: RATE, delivery: 180000, lang: () => lang, skin: 'halabi', layout: 'sheet', fallbackImg: I + 'badge.jpg',
     fabIcon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.5H6.2z"/><path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8"/><path d="M12 12c1.6 1.4 1.8 3 .4 4.4-.5-1-1.4-1.3-1.9-.6-.8-1.6 0-2.8 1.5-3.8z" fill="currentColor"/></svg>',
     cartTop: packScene,
     onBrowse: () => scrollTo({ top: document.getElementById('menu').offsetTop - 120, behavior: 'smooth' }),
     emptyArt: `<img src="${P}bag.jpg" alt="" style="width:120px;margin:0 auto;mix-blend-mode:lighten;opacity:.6">`,
     doneArt: () => `<div class="done-bag"><img src="${P}bag.jpg" alt=""><span class="seal">${TXT[lang].sealed}</span></div>`,
-    t: { en: { yourOrder: 'Your bag', viewOrder: 'Your bag', placed: 'Bag is packed!', thanks: 'Sahtein', s2: 'On the fire 🔥', deliveryNote: 'Delivery around Tariq el Jdideh & Beirut.' },
-         ar: { yourOrder: 'كيسك', viewOrder: 'كيسك', placed: 'كيسك جاهز!', thanks: 'صحتين', s2: 'عالنار 🔥', deliveryNote: 'ديليفري بطريق الجديدة وبيروت.' } }
+    t: { en: { yourOrder: 'Your bag', viewOrder: 'Your bag', placed: 'Bag is packed!', thanks: 'Sahtein', s2: 'On the fire', how: 'How do you want it?', deliveryNote: 'Delivery around Tariq el Jdideh & Beirut.' },
+         ar: { yourOrder: 'كيسك', viewOrder: 'كيسك', placed: 'كيسك جاهز!', thanks: 'صحتين', s2: 'عالنار', deliveryNote: 'ديليفري بطريق الجديدة وبيروت.' } }
   });
-  Order.register(flat.map(it => ({ id: it.id, n: it.en, ar: it.ar, p: it.p, img: typeof it.ph === 'string' ? I + it.ph : (it.cat.pk ? P + it.cat.pk + '.jpg' : null), emo: it.emo, fly: it.cat.pk ? P + it.cat.pk + '.jpg' : null, pkKey: it.cat.pk || it.id })));
+  Order.register(flat.map(it => { const pk = P + (it.pkf || it.cat.pk + '.jpg'); return { id: it.id, n: it.en, ar: it.ar, p: it.p, img: typeof it.ph === 'string' ? I + it.ph : pk, fly: pk, pkKey: it.pkf || it.cat.pk, svg: !!it.pkf }; }));
   apply(lang);
 })();
 </script>
